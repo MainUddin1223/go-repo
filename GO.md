@@ -19,8 +19,18 @@ run ` go mod init module name`
 
 ### variable shadowing
 
-if a variable with same name exist more than one times it will prioritize scopes.
-like same variable declared in global and local . it will reflect local value but it will not replace actual value. SO outside of the block we will get global value
+Variable shadowing occurs when a new variable with the same name is declared in an inner scope, such as inside a function or block.
+This new variable "shadows" (hides) the outer variable — it does not modify the original variable, and no redeclaration error occurs because it's a different scope.
+
+```
+var a = 100 // global variable
+
+func main() {
+    a := 50 // this shadows the global 'a'
+    fmt.Println(a) // prints 50, not 100
+}
+
+```
 
 ### Function types
 
@@ -36,7 +46,7 @@ func add(a int,b int){
 
 #### Init Function
 
-A Function is invoked immediately while executing the code block is called init function
+A Function is invoked immediately while executing the code is called init function
 we must se init after func to declare init function
 
 ```
@@ -44,3 +54,30 @@ func init(){
     fmt.Println("Hello Init function")
 }
 ```
+
+#### Anonymous Function
+
+A function without name is called anonymous function and it must called immediately
+
+```
+func main(){
+    (a int,b int){
+    c :=a+b
+    fmt.Println(c)
+    }
+}(5,7) //It also called Immediately Invoked Function Expression
+```
+
+#### Function Expression and Assign function in a variable
+
+```
+add : = func(a int , b int){
+    c:= a+b
+    fmt.Println(c)
+}
+add(1,3)
+```
+
+#### Interview question link
+
+https://docs.google.com/document/d/1g7UHRVzjVGdeKdbyqv6HwJE2k7SoDIvwgvQa58VzvBs/edit?fbclid=IwY2xjawL9VfhleHRuA2FlbQIxMQABHvyrNqPxpkYoWP11rO_tW6MV17Dysvav5wzTuXCktJVlumSzcOGxIcf9WGUM_aem_0u_u3ff1N3sk_QbxldLtpg&tab=t.0
